@@ -3,6 +3,7 @@
 
 @author: Драган Ћајић
 @datetime: 10:15 PM Sunday, March 12, 2023
+@modified:  9:14 PM Monday, March 13, 2023
 @description:
     Start your Square Root Finder program here.
 """
@@ -22,9 +23,32 @@ def start_program():
         # 1. Take input data and perform calculation
         elif user_input == "1":
             while True:
-                # TODO: Sanitize the user input
-                s = int(input("Enter integer for which you want of find square root: "))
-                x0 = float(input("Please, enter your approximate value of square root: "))
+                # TODO: Sanitize the user input √
+                while True:
+                    try:
+                        s = int(input("Enter integer for which you want of find square root: "))
+                    except ValueError:
+                        print("Please enter a valid non-negative integer")
+                        continue
+                    if s >= 0:
+                        print(f"You have entered: {s}")
+                        break
+                    else:
+                        print("The integer must be non-negative in order to find square root!")
+
+                while True:
+                    try:
+                        x0 = float(input("Please, enter your approximate value of square root: "))
+                    except ValueError:
+                        print("Please enter a valid floating-point number")
+                        continue
+                    if x0 > 0:
+                        print(f"You have entered: {x0}")
+                        break
+                    else:
+                        print("Hmm, the value of square root should be non-negative! Try again.")
+                        print("In fact, you should enter a positive floating-point number!! ;-)")
+
                 result = babylonian.find_square_root(s, x0)
                 hp.print_result(s, result)
 
