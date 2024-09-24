@@ -7,11 +7,15 @@
 @description:
     Start your Square Root Finder program here.
 """
-import babylonian
+from babylonian import find_square_root
 import helper_functions as hp
 
 
+# TODO: Try to refactor handling menu options into separate function ;-)
+# Too many branches (14/12)Pylint (R0912:too-many-branches) <- Visual Studio Code
+# R0912:too-many-branches: 16,0: Too many branches (14/12) <-- Spyder IDE
 def start_program():
+    """Function for starting program."""
     hp.print_menu()
 
     while True:
@@ -21,9 +25,8 @@ def start_program():
             print("Your input is not correct! Choose numbers: 1, 2, or 3")
             continue
         # 1. Take input data and perform calculation
-        elif user_input == "1":
+        if user_input == "1":
             while True:
-                # TODO: Sanitize the user input √
                 while True:
                     try:
                         s = int(input("Enter integer for which you want of find square root: "))
@@ -33,8 +36,7 @@ def start_program():
                     if s >= 0:
                         print(f"You have entered: {s}")
                         break
-                    else:
-                        print("The integer must be non-negative in order to find square root!")
+                    print("The integer must be non-negative in order to find square root!")
 
                 while True:
                     try:
@@ -45,18 +47,16 @@ def start_program():
                     if x0 > 0:
                         print(f"You have entered: {x0}")
                         break
-                    else:
-                        print("Hmm, the value of square root should be non-negative! Try again.")
-                        print("In fact, you should enter a positive floating-point number!! ;-)")
+                    print("Hmm, the value of square root should be non-negative! Try again.")
+                    print("In fact, you should enter a positive floating-point number!! ;-)")
 
-                result = babylonian.find_square_root(s, x0)
+                result = find_square_root(s, x0)
                 hp.print_result(s, result)
 
                 action = input("Calculate more -- YES or NO (y/n): ")
                 if action.lower() == "yes" or action.lower() == "y":
                     continue
-                else:
-                    break
+                break
         # 2. Perform calculation using another method
         elif user_input == "2":
             print("Dear Customer, NEW SERVICES WILL BE SOON AVAILABLE!")
@@ -70,4 +70,5 @@ def start_program():
             continue
 
 
-start_program()
+if __name__ == '__main__':
+    start_program()

@@ -9,6 +9,7 @@
 
 
 def print_menu():
+    """Function for printing menu."""
     print("""
         M A I N  * * *  M E N U
 ========================================
@@ -21,6 +22,7 @@ def print_menu():
 
 
 def print_result(number, sqrt_value):
+    """Function for printing the result"""
     print(f"""
     R E S U L T  * * *  SQUARE ROOT
 ========================================
@@ -28,3 +30,7 @@ def print_result(number, sqrt_value):
 Square root of number {number} is: {sqrt_value}
 ========================================""")
     print("Square root of number {0} is: {1:.5f}".format(number, sqrt_value))
+
+
+if __name__ == '__main__':
+    pass
